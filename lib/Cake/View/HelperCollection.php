@@ -127,7 +127,7 @@ class HelperCollection extends ObjectCollection implements CakeEventListener {
 		}
 		$helperClass = $name . 'Helper';
 		App::uses($helperClass, $plugin . 'View/Helper');
-		if (!class_exists($helperClass)) {
+		if (!class_exists($helperClass) || !in_array($helperClass, get_declared_classes())) {
 			throw new MissingHelperException(array(
 				'class' => $helperClass,
 				'plugin' => substr($plugin, 0, -1)
